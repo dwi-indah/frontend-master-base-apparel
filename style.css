@@ -17,7 +17,10 @@ body {
   min-height: 100vh;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'nav nav' 'hero hero' 'intro intro' 'footer footer';
+      grid-template-areas: 'nav nav'
+ 'hero hero'
+ 'intro intro'
+ 'footer footer';
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   -ms-grid-rows: auto;
@@ -29,11 +32,17 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: #ce9797;
+  background-image: linear-gradient(135deg, white, #fff5f5);
 }
 
 @media (min-width: 1200px) {
   body {
-        grid-template-areas: 'nav hero' 'intro hero' 'footer hero';
+        grid-template-areas: 'nav hero'
+ 'intro hero'
+ 'footer hero';
+    background-image: url("images/bg-pattern-desktop.svg"), linear-gradient(135deg, white, #fff5f5);
+    background-size: cover;
+    background-position: center;
   }
 }
 
@@ -227,6 +236,8 @@ button {
   padding: .7rem 1.5rem;
   border-radius: 24px;
   cursor: pointer;
+  -webkit-box-shadow: rgba(65, 58, 58, 0.3) 0px 4px 24px 0px;
+          box-shadow: rgba(65, 58, 58, 0.3) 0px 4px 24px 0px;
 }
 
 .intro-input-warning {
