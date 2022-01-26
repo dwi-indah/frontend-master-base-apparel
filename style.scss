@@ -1,0 +1,219 @@
+$clr-red: hsl(0, 93%, 68%);
+$clr-light-red: hsl(0, 36%, 70%);
+$clr-bg-violet: hsl(273, 75%, 66%);
+$clr-bg-blue: hsl(240, 73%, 65%);
+$clr-gray: hsl(0, 6%, 24%);
+
+// breakpoint
+$screen-mobile: 375px;
+$screen-tablet: 768px;
+$screen-desktop: 1200px;
+$screen-large-desktop: 1440px;
+
+// mixin
+@mixin min-responsive ($media) {
+    @media (min-width: $media) {
+        @content;
+    }
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 'nav nav'
+        'hero hero'
+        'intro intro'
+        'footer footer';
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+    color: $clr-light-red;
+
+    @include min-responsive($screen-desktop) {
+        grid-template-areas: 'nav hero'
+            'intro hero'
+            'footer hero';
+    }
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    vertical-align: top;
+    -ms-interpolation-mode: bicubic;
+    border-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    -webkit-margin-before: 0;
+    margin-block-start: 0;
+    -webkit-margin-after: 0;
+    margin-block-end: 0;
+    line-height: 1.2;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+
+.nav {
+    grid-area: nav;
+    padding: 2rem;
+
+    @include min-responsive($screen-desktop) {
+        padding: 3rem 6rem;
+        align-self: self-start;
+    }
+}
+
+.hero {
+    grid-area: hero;
+    width: 100%;
+    height: 300px;
+    background: url('images/hero-mobile.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include min-responsive($screen-desktop) {
+        height: 100%;
+        background: url('images/hero-desktop.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.intro {
+    grid-area: intro;
+    padding: 2rem;
+    text-align: center;
+
+    @include min-responsive($screen-desktop) {
+        padding: 3rem 6rem;
+        align-self: self-start;
+        text-align: left;
+        max-width: 570px;
+    }
+
+    &-title {
+        font-weight: 600;
+        font-size: 3rem;
+        text-transform: uppercase;
+        color: $clr-gray;
+        margin-bottom: 2rem;
+
+        @include min-responsive($screen-desktop) {
+            max-width: 300px;
+            letter-spacing: 16px;
+        }
+
+        span {
+            display: block;
+            font-weight: 300;
+            color: $clr-light-red;
+        }
+    }
+
+    &-input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        border-radius: 30px;
+        border: 1px solid $clr-light-red;
+        margin-top: 2rem;
+        transition: border .5s ease;
+        
+        &.warning {
+            border: 1px solid $clr-red;
+            
+            .intro-input-form label {
+                display: block;
+            }
+        }
+        
+        &-form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 82%;
+            padding: .5rem 1rem;
+            
+            label {
+                display: none;
+            }
+            
+            input {
+                font-family: 'Josefin Sans', sans-serif;
+                color: $clr-gray;
+                height: 24px;
+
+                &::placeholder {
+                    font-family: 'Josefin Sans', sans-serif;
+                    color: $clr-light-red;
+                }
+            }
+        }
+
+        &-button {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-image: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+            padding: .7rem 1.5rem;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        &-warning {
+            display: none;
+            text-align: left;
+            padding-left: 1rem;
+            font-size: .7rem;
+            color: $clr-red;
+            margin-top: .5rem;
+        }
+    }
+
+}
+
+.footer {
+    grid-area: footer;
+    padding: 2rem;
+
+    a {
+        color: $clr-gray;
+    }
+
+    @include min-responsive($screen-desktop) {
+        padding: 3rem 6rem;
+        align-self: self-start;
+    }
+}
